@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+set -e
+[ -n "$RBENV_DEBUG" ] && set -x
+
+if [ "$1" = "--version" ] || [ "$1" = "-v" ]; then
+  echo "rbenv-yjit 0.1.0"
+  exit
+fi
+
+if [[ $(echo $RBENV_VERSION | tr -d '.') -gt "300" ]]; then
+  echo "export RUBYOPT=--yjit"
+fi
